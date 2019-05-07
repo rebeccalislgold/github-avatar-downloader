@@ -18,21 +18,24 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 }
 
-var repoName = process.argv[2]
-var repoOwner = process.argv[3]
+var repo_Name = process.argv[2]
+var repo_Owner = process.argv[3]
 
-getRepoContributors(repoName, repoOwner, function(err, result) {
+getRepoContributors(repo_Owner, repo_Name, function(err, result) {
 
-  console.log("Errors:", err);
-  console.log("Result:", result);
-  var obj = JSON.parse(result);
+  if(repo_Name && repo_Owner) {
+    console.log("Errors:", err);
+    // console.log("Result:", result);
+    var obj = JSON.parse(result);
 
-  for (var index in obj) {
-    var avatarUrl = obj[index].avatar_url;
-    var path = "avatars/" + obj[index].login + ".jpg"
-    downloadImageByURL(avatarUrl, path)
+    for (var index in obj) {
+      var avatarUrl = obj[index].avatar_url;
+      var path = "avatars/" + obj[index].login + ".jpg"
+      downloadImageByURL(avatarUrl, path)
+    }
+  } else {
+    console.log("Please enter a repository name and owner.")
   }
-
 });
 
 
