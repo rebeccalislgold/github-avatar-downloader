@@ -18,7 +18,11 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 }
 
-getRepoContributors("jquery", "jquery", function(err, result) {
+var repoName = process.argv[2]
+var repoOwner = process.argv[3]
+
+getRepoContributors(repoName, repoOwner, function(err, result) {
+
   console.log("Errors:", err);
   console.log("Result:", result);
   var obj = JSON.parse(result);
