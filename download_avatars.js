@@ -25,7 +25,7 @@ getRepoContributors("jquery", "jquery", function(err, result) {
 
   for (var index in obj) {
     var avatarUrl = obj[index].avatar_url;
-    var path = "avatars/kvirani.jpg"
+    var path = "avatars/" + obj[index].login + ".jpg"
     downloadImageByURL(avatarUrl, path)
   }
 
